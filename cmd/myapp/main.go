@@ -19,6 +19,6 @@ func main() {
 	http.Handle("/", r)
 
 	if err := http.ListenAndServe(":"+services.GetEnv("TODO_PORT"), handlers.WebDir()); err != nil {
-		log.Fatalf("ListenAndServe: %v\n", err)
+		log.Printf("ListenAndServe: %v\n", err)
 	}
 }

@@ -14,7 +14,7 @@ import (
 func CreateDb(dbName string) {
 	db, err := sql.Open("sqlite3", services.GetEnv("TODO_DBFILE"))
 	if err != nil {
-		log.Fatalf("failed to open database: %v", err)
+		log.Printf("failed to open database: %v", err)
 	}
 	defer db.Close()
 
@@ -29,13 +29,13 @@ func CreateDb(dbName string) {
             );`)
 
 		if err != nil {
-			log.Fatalf("failed to create table: %v", err)
+			log.Printf("failed to create table: %v", err)
 		}
 
 		_, err = db.ExecContext(context.Background(),
 			`CREATE INDEX IF NOT EXISTS scheduler_date ON scheduler (date);`)
 		if err != nil {
-			log.Fatalf("failed to create index: %v", err)
+			log.Printf("failed to create index: %v", err)
 		}
 	}
 }
