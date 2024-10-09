@@ -1,13 +1,10 @@
 package models
 
+// Task представляет структуру задачи
 type Task struct {
-	Id      string `json:"id,omitempty"`
+	ID      string `json:"id"`
 	Date    string `json:"date"`
 	Title   string `json:"title"`
-	Comment string `json:"comment,omitempty"`
+	Comment string `json:"comment"`
 	Repeat  string `json:"repeat"`
 }
-
-const (
-	Layout string = "20060102"
-)
