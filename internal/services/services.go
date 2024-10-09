@@ -6,27 +6,12 @@ import (
 	"errors"
 	"log"
 	"net/http"
-	"os"
 	"strconv"
 	"strings"
 	"time"
 
-	"github.com/joho/godotenv"
 	"github.com/paran0iaa/TODO/internal/models"
 )
-
-func GetEnv(envVar string) string {
-	if err := godotenv.Load(); err != nil {
-		log.Println("Error loading .env file")
-	}
-
-	if val, ok := os.LookupEnv(envVar); ok {
-		return val
-	}
-	log.Println("Error getting env var")
-
-	return envVar
-}
 
 func WebDir() http.Handler {
 	return http.FileServer(http.Dir("./web"))

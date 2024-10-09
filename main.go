@@ -18,6 +18,7 @@ func main() {
 	http.HandleFunc("/api/task", handlers.TaskHandler)
 	http.HandleFunc("/api/tasks", handlers.TasksHandler)
 	http.HandleFunc("/api/task/done", handlers.MarkTaskDone)
+	http.Handle("/", http.FileServer(http.Dir("./web")))
 	http.HandleFunc("/api/nextdate", handlers.NextDateHandler)
-	log.Fatal(http.ListenAndServe(":"+services.GetEnv("TODO_PORT"), services.WebDir()))
+	log.Fatal(http.ListenAndServe(":1818", nil))
 }
